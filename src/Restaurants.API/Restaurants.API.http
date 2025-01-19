@@ -1,0 +1,122 @@
+@host = https://localhost
+@port = 7149
+@token = CfDJ8AL3ZXEPKBJEvd3jIE_5cYBbXM8JoSLLcglU7lQaloVXBrJqIq_tLeH3EL-uqe1de_keaz-L3sZHtpdj7-FURdaBXvOowR_LzWvZTsf6CEhOzLWepavIO3vW5qgpc7U5h9r1_CQLj66LslV84rcBiYdzszXE9xbgmlfaFguPd-ag1HcTww_kG1_7uCVM40cSpTCmBNVjapk0WoACLTizuxRKYt4yHFULMkelWLZsvkalJL5bE1bZw82KFw3CZcAQT3C5gOGZlrbzB01SrG918Y03JT1k-7DAyO2asjNFgqhibCdRA-k1d2fr6-HasgscpNcQ7BMHj7OYdWMTP6RCC3u5qN0vxGYQhvhzfeyKvCKOzcErfVj6tLA7mm3FCUlpOjzxkLPbmdN1MfsPaxUmCJcWpo3NFBaGDDFj8QjULv38i4B_QBArv6j91AEQdvtv0X-N_Trf7snfh4IHOEfSBEVVeydPKPd03AODcT1WZEpnUh1ZWcUf7aXT2wXIOIfkQL0Iec4Fnm5NvlqY0MEksX2VQejdTyxuhhBcaDxjy4PqKz9vV7ej-cblF9PCjVAlPNPthECu8NbcPnWn9UXGEmGT0Wqx1aoi_YcRUyRXhwa_iO-ER5YPqOwEvw8higQMqhg8Nk2quOW9cC1MrTYspRw6EnUkMPq-xBAxOLoJzDAwiuHkHwfx0g6aj3jFNLDDy4Mf-MdadaTGIquE7l0q7u_3jXHeHoey6Nwt5ZMGR9_RjGsF6FyBdZWIMn4AlhbUdwG_HuA0jzn-jvUfWGP-bqDtVX46rgsG8fnidABEHtHl
+
+@Restaurants.API_HostAddress = https://localhost:7149
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=5&pageNumber=1&sortBy=Name&sortDirection=Descending
+Authorization: Bearer {{token}}
+
+###
+
+Delete {{Restaurants.API_HostAddress}}/api/restaurants/10
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/2
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes/3
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes
+
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Owner2 restaurant2",
+  "Description": "A culinary experience like no other",
+  "Category": "Indian",
+  "HasDelivery": true,
+  "ContactEmail": "info@gourmetdelights.com",
+  "ContactNumber": "555-123-4567",
+  "City": "Metropolis",
+  "Street": "456 Gourmet Avenue",
+  "PostalCode": "54-321"
+}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/10
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Name": "Updated name",
+  "Description": "This is a sample restaurant description.",
+  "HasDelivery": false
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price": 12.99,
+  "KiloCalories": 750
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "owner2@test.com",
+  "password": "Password1!"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner2@test.com",
+  "password": "Password1!"
+}
+
+###
+
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Nationality": "French",
+  "DateOfBirth": "2010-01-01"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "UserEmail": "owner2@test.com",
+   "RoleName": "Owner"
+}
+
+###
