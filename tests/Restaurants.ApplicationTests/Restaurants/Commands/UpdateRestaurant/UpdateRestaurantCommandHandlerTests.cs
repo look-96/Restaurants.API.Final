@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -7,6 +7,7 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
+using System.Security.AccessControl;
 using Xunit;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant.Tests;
@@ -86,10 +87,10 @@ public class UpdateRestaurantCommandHandlerTests
         // act
 
         Func<Task> act = async () => await _handler.Handle(request, CancellationToken.None);
-
+        
         // assert
         await act.Should().ThrowAsync<NotFoundException>()
-                .WithMessage($"Restaurant with id {restaurantId} doesn't exist");
+                .WithMessage($"Restaurant with id {restaurantId} doesn't exist.");
     }
 
     [Fact]
