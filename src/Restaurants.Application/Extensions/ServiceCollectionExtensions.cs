@@ -11,9 +11,10 @@ public static class ServiceCollectionExtensions
     {
         var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
 
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));  
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
 
-        services.AddAutoMapper(applicationAssembly);
+        services.AddAutoMapper(cfg => cfg.LicenseKey = Environment.GetEnvironmentVariable("AUTOMAPPER_LICENSE_KEY"),
+                    applicationAssembly);
 
         services.AddValidatorsFromAssembly(applicationAssembly)
             .AddFluentValidationAutoValidation();
